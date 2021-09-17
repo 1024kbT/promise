@@ -44,54 +44,54 @@ promise.then(2).then((n) => {
 
 
 //时间循环机制
-// let a;
-// const b = new Promise((resolve, reject) => {
-//   console.log('promise1');
-//   resolve();
-// }).then(() => {
-//   console.log('promise2');
-// }).then(() => {
-//   console.log('promise3');
-// }).then(() => {
-//   console.log('promise4');
-// });
+let a;
+const b = new Promise((resolve, reject) => {
+  console.log('promise1');
+  resolve();
+}).then(() => {
+  console.log('promise2');
+}).then(() => {
+  console.log('promise3');
+}).then(() => {
+  console.log('promise4');
+});
 
-// a = new Promise(async (resolve, reject) => {
-//   console.log(a);
-//   await b;
-//   console.log(a);
-//   console.log('after1');
-//   await a
-//   resolve(true);
+a = new Promise(async (resolve, reject) => {
+  console.log(a);
+  await b;
+  console.log(a);
+  console.log('after1');
+  await a
+  resolve(true);
 
-//   console.log('after2');
-// });
+  console.log('after2');
+});
 
-// console.log('end');
+console.log('end');
 
-//promise的状态只会由第一次决定
+// promise的状态只会由第一次决定
 
-// const promise = new Promise((resolve, reject) => {
-//   resolve('success1');
-//   reject('error');
-//   resolve('success2');
-// });
+const promise = new Promise((resolve, reject) => {
+  resolve('success1');
+  reject('error');
+  resolve('success2');
+});
 
-// promise
-//   .then((res) => {
-//     console.log('then: ', res);
-//   })
-//   .catch((err) => {
-//     console.log('catch: ', err);
-//   });
+promise
+  .then((res) => {
+    console.log('then: ', res);
+  })
+  .catch((err) => {
+    console.log('catch: ', err);
+  });
 
-// Promise.resolve()
-//   .then(() => {
-//     return new Error('error!!!')
-//   })
-//   .then((res) => {
-//     console.log('then: ', res)
-//   })
-//   .catch((err) => {
-//     console.log('catch: ', err)
-//   })
+Promise.resolve()
+  .then(() => {
+    return new Error('error!!!')
+  })
+  .then((res) => {
+    console.log('then: ', res)
+  })
+  .catch((err) => {
+    console.log('catch: ', err)
+  })
