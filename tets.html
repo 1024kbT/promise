@@ -1,0 +1,132 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: lwq
+ * @Date: 2021-08-30 20:11:00
+ * @LastEditors: Seven
+ * @LastEditTime: 2021-09-17 13:02:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+    //递归 第一次查询到number为空就跳出递归 添加一个开关
+
+    // let arr = [
+    //   {
+    //     number: 3,
+    //     childs: [
+    //       {
+    //         number: '',
+    //         childs: [],
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     number: 2,
+    //     childs: [],
+    //   },
+    //   {
+    //     number: 5,
+    //     childs: [],
+    //   },
+    // ]
+
+    // let flag = true
+
+    // function checkseq(selecteData) {
+    //   for (let i = 0; i < selecteData.length; i++) {
+    //     // if (!flag) {
+    //     //   return
+    //     // }
+    //     if (
+    //       selecteData[i].number === null ||
+    //       selecteData[i].number === undefined ||
+    //       selecteData[i].number === ''
+    //     ) {
+    //       console.log('22')
+    //       // flag = false
+    //       return false
+    //     } else {
+    //       console.log('jkjk')
+    //       if (selecteData[i].childs) {
+    //         console.log('44')
+    //         checkseq(selecteData[i].childs)
+    //       }
+    //     }
+    //   }
+    // }
+
+    //按顺序执行promise
+
+    var makePromise = function (value, time) {
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          resolve(value)
+        }, time)
+      })
+    }
+
+    function order(promises) {
+      let dataArr = []
+      let promise = Promise.resolve()
+      for (let i = 0; i < promises.length; i++) {
+        promise = promise.then((data) => {
+          if (data) {
+            dataArr.push(data)
+            // console.log(dataArr)
+          }
+          return promises[i]
+        })
+      }
+      return promise.then((data) => {
+        console.log(data)
+      })
+    }
+    order([
+      makePromise('a', 3000),
+      makePromise('b', 5000),
+      makePromise('c', 2000),
+      // makePromise('d', 1000),
+    ])
+
+    //队列实现顺序执行
+    // function getA() {
+    //   return new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //       resolve(2)
+    //     }, 1000)
+    //   })
+    // }
+
+    // function getB() {
+    //   return new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //       resolve(3)
+    //     }, 1000)
+    //   })
+    // }
+    // var dataArr = []
+
+    // function order(arr) {
+    //   var promise = Promise.resolve()
+    //   arr.forEach(function (item) {
+    //     promise = promise.then(item).then((res) => {
+    //       dataArr.push(res)
+    //       return dataArr
+    //     })
+    //   })
+    //   return promise
+    // }
+
+    // order([getA, getB]).then((res) => {
+    //   console.log(res)
+    // })
+  </script>
+</html>
