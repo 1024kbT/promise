@@ -4,7 +4,7 @@
  * @Autor: lwq
  * @Date: 2021-08-30 21:56:14
  * @LastEditors: Seven
- * @LastEditTime: 2021-09-18 09:56:33
+ * @LastEditTime: 2021-09-18 10:11:38
  */
 // 对reduce的理解：
 // reduce(callback,initiaValue)会传入两个变量，回调函数(callback)和初始值(initiaValue)。
@@ -57,7 +57,6 @@ let b = names.reduce((pre, next) => {
   } else {
     pre[next] = 1
   }
-
   return pre
 }, {})
 console.log(b);
