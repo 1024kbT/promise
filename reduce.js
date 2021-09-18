@@ -4,7 +4,7 @@
  * @Autor: lwq
  * @Date: 2021-08-30 21:56:14
  * @LastEditors: Seven
- * @LastEditTime: 2021-08-30 21:57:15
+ * @LastEditTime: 2021-09-18 09:56:33
  */
 // 对reduce的理解：
 // reduce(callback,initiaValue)会传入两个变量，回调函数(callback)和初始值(initiaValue)。
@@ -41,11 +41,23 @@ let arr1 = [{
   cop: '123'
 },]
 //修改数字变为属性名和属性值模式
-arr1.reduce((pre, next) => {
+let a = arr1.reduce((pre, next) => {
 
   pre[next.name] = next.cop
-  console.log(pre);
 
   return pre
 
 }, {})
+console.log(a);
+//计算元素出现次数
+let names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+let b = names.reduce((pre, next) => {
+  if (next in pre) {
+    pre[next]++
+  } else {
+    pre[next] = 1
+  }
+
+  return pre
+}, {})
+console.log(b);
