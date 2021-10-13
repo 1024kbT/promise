@@ -4,7 +4,7 @@
  * @Autor: lwq
  * @Date: 2021-08-30 21:56:14
  * @LastEditors: Seven
- * @LastEditTime: 2021-09-18 10:11:38
+ * @LastEditTime: 2021-09-24 13:05:33
  */
 // 对reduce的理解：
 // reduce(callback,initiaValue)会传入两个变量，回调函数(callback)和初始值(initiaValue)。
@@ -52,6 +52,7 @@ console.log(a);
 //计算元素出现次数
 let names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
 let b = names.reduce((pre, next) => {
+  // console.log(next, pre);
   if (next in pre) {
     pre[next]++
   } else {

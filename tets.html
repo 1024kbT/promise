@@ -4,7 +4,7 @@
  * @Autor: lwq
  * @Date: 2021-08-30 20:11:00
  * @LastEditors: Seven
- * @LastEditTime: 2021-09-17 13:02:22
+ * @LastEditTime: 2021-09-27 13:19:11
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -65,36 +65,36 @@
 
     //按顺序执行promise
 
-    var makePromise = function (value, time) {
-      return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          resolve(value)
-        }, time)
-      })
-    }
+    // var makePromise = function (value, time) {
+    //   return new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //       resolve(value)
+    //     }, time)
+    //   })
+    // }
 
-    function order(promises) {
-      let dataArr = []
-      let promise = Promise.resolve()
-      for (let i = 0; i < promises.length; i++) {
-        promise = promise.then((data) => {
-          if (data) {
-            dataArr.push(data)
-            // console.log(dataArr)
-          }
-          return promises[i]
-        })
-      }
-      return promise.then((data) => {
-        console.log(data)
-      })
-    }
-    order([
-      makePromise('a', 3000),
-      makePromise('b', 5000),
-      makePromise('c', 2000),
-      // makePromise('d', 1000),
-    ])
+    // function order(promises) {
+    //   let dataArr = []
+    //   let promise = Promise.resolve()
+    //   for (let i = 0; i < promises.length; i++) {
+    //     promise = promise.then((data) => {
+    //       if (data) {
+    //         dataArr.push(data)
+    //         // console.log(dataArr)
+    //       }
+    //       return promises[i]
+    //     })
+    //   }
+    //   return promise.then((data) => {
+    //     console.log(data)
+    //   })
+    // }
+    // order([
+    //   makePromise('a', 3000),
+    //   makePromise('b', 5000),
+    //   makePromise('c', 2000),
+    //   // makePromise('d', 1000),
+    // ])
 
     //队列实现顺序执行
     // function getA() {
@@ -128,5 +128,20 @@
     // order([getA, getB]).then((res) => {
     //   console.log(res)
     // })
+    if (b in window) {
+      var b = 1
+    }
+    console.log(b in window)
+    console.log('-------------')
+    console.log('global begin' + i)
+    var i = 1
+    foo(1)
+    function foo(i) {
+      if (i == 4) return
+      console.log('beg' + i)
+      foo(i + 1)
+      console.log('bend' + i)
+    }
+    console.log('end' + i)
   </script>
 </html>
